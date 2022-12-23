@@ -37,7 +37,7 @@ export const TaskList = ({children}) => {
     <div>
       <div className="flex flex-row rounded-t-sm shadow-lg">
         <ul
-          className={`flex list-none space-x-2 p-3`}
+          className={`list flex list-none space-x-2 p-1  overflow-x-auto `}
           id="tabs-tab"
           role={"tablist"}
         >
@@ -50,12 +50,12 @@ export const TaskList = ({children}) => {
                 className="focus:font-semibold"
                 onClick={(e, key) => handleElementClick(item.id)}
               >
-                {`${item.name} ${item.id}`}
+                {`${item.name}` }
               </button>
             </li>
           ))}
-          {children}
         </ul>
+          {children}
       </div>
       <div>
         <TabContent listID={activeListID} />
