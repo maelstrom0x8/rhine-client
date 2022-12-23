@@ -1,10 +1,13 @@
+import { useTask } from "~/context/Hooks";
 import { useState } from "react";
 
 export const ListEntryDialog = ({ className, isOpen, onClose }) => {
   const [title, setTitle] = useState("");
 
+  const {addList} = useTask();
+
   const handleSubmit = () => {
-    // post new list
+    addList(title);
     onClose();
   };
 
@@ -13,7 +16,6 @@ export const ListEntryDialog = ({ className, isOpen, onClose }) => {
       className={`${className}  ${
         !isOpen && "hidden"
       } bg-neutral-300 p-1 rounded-b-sm shadow-lg flex space-x-1 max-w-sm mx-auto`}
-      onke
     >
       <input
         type="text"

@@ -6,6 +6,7 @@ import TaskList from "~/components/TaskPanel/TaskList";
 import ListEntryDialog from "~/components/Dialog/ListEntryDialog";
 import { useState } from "react";
 import { useEffect } from "react";
+import { TaskProvider } from "~/context/tasks/Context";
 
 const icon = (
   <svg
@@ -43,18 +44,26 @@ const App = () => {
     flex-col flex p-1 space-y-2 space-y-reverse"
     >
       <Header />
-      <TaskPanel>
-        <ListEntryDialog
-          className="fixed top-[10em] right-[3em]"
-          onClose={() => {
-            setShowListInput(false);
-          }}
-          isOpen={showListInput}
-        />
-        <TaskList>
-          <Button onClick={() => {setShowListInput(true)}} text={"New List"} icon={icon} />
-        </TaskList>
-      </TaskPanel>
+      <TaskProvider>
+        <TaskPanel>
+          <ListEntryDialog
+            className="fixed top-[10em] right-[3em]"
+            onClose={() => {
+              setShowListInput(false);
+            }}
+            isOpen={showListInput}
+          />
+          <TaskList>
+            <Button
+              onClick={() => {
+                setShowListInput(true);
+              }}
+              text={"New List"}
+              icon={icon}
+            />
+          </TaskList>
+        </TaskPanel>
+      </TaskProvider>
     </div>
   );
 };
