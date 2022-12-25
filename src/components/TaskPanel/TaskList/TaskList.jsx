@@ -1,6 +1,5 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useTask } from "~/context/Hooks";
-
 
 const TabContent = ({ listID }) => {
   const { getListTasks } = useTask();
@@ -24,10 +23,10 @@ const TabContent = ({ listID }) => {
   );
 };
 
-export const TaskList = ({children}) => {
+export const TaskList = ({ children }) => {
   const { list } = useTask();
 
-  const [activeListID, setActiveListID] = useState();
+  const [activeListID, setActiveListID] = useState(1);
 
   const handleElementClick = (key) => {
     setActiveListID(key);
@@ -36,26 +35,24 @@ export const TaskList = ({children}) => {
   return (
     <div>
       <div className="flex flex-row rounded-t-sm shadow-lg">
-        <ul
-          className={`list flex list-none space-x-2 p-1  overflow-x-auto `}
-          id="tabs-tab"
-          role={"tablist"}
-        >
+        <ul className={`list flex list-none space-x-2 p-1 overflow-x-auto `}>
           {list.map((item, i) => (
             <li
-              className="hover:cursor-pointer max-sm:text-sm p-2 hover:font-light"
+              className={`${
+                activeListID === item.id ? "focus" : ""
+              } hover:cursor-pointer max-sm:text-sm p-2 hover:border-b-4 group`}
               key={i}
             >
-              <button
-                className="focus:font-semibold"
+              <div
+                className="group-focus:font-semibold"
                 onClick={(e, key) => handleElementClick(item.id)}
               >
-                {`${item.name}` }
-              </button>
+                {`${item.name}`}
+              </div>
             </li>
           ))}
         </ul>
-          {children}
+        {children}
       </div>
       <div>
         <TabContent listID={activeListID} />
