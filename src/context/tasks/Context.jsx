@@ -8,8 +8,11 @@ const API_URL_PATH = "/api/v1/rhine";
 export const TaskContext = createContext();
 
 export const TaskProvider = ({ children }) => {
+  
   const [list, setList] = useState([]);
   const [tasks, setTasks] = useState([]);
+
+  const [activeListID, setActiveListID] = useState(1);
 
   const getListTasks = (listID = 1) => {
     axios
@@ -28,6 +31,10 @@ export const TaskProvider = ({ children }) => {
     updateList();
   };
 
+  const addTask = (values) => {
+    axios.post(`${API_URL_PATH}/task/create`, {...values}, {params: {list_id: `${activeListID}`}})
+  }
+
   const updateList = () => {
     axios
       .get(`${API_URL_PATH}/list`)
@@ -40,7 +47,7 @@ export const TaskProvider = ({ children }) => {
   });
 
   return (
-    <TaskContext.Provider value={{ list, getListTasks, addList }}>
+    <TaskContext.Provider value={{ list, getListTasks, addList, addTask , activeListID, setActiveListID}}>
       {children}
     </TaskContext.Provider>
   );

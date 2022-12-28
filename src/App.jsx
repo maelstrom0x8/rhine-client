@@ -1,40 +1,59 @@
-import TaskPanel from "~/components/TaskPanel";
-import Header from "~/components/Header";
-
-import "./index.css";
-import TaskList from "~/components/TaskPanel/TaskList";
-import ListEntryDialog from "~/components/Dialog/ListEntryDialog";
 import { useState } from "react";
-import { useEffect } from "react";
+import { faPencil } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+
+
+import Header from "~/components/Header";
+import TaskPanel from "~/components/TaskPanel";
+import TaskList from "~/components/TaskPanel/TaskList";
+import TaskModal from "~/components/Modal/TaskModal";
+import ListModal from "~/components/Modal/ListModal";
 import { TaskProvider } from "~/context/tasks/Context";
 
+
+
+
 const App = () => {
-  const [showListInput, setShowListInput] = useState(false);
+  const [showListModal, setShowListModal] = useState(false);
+  const [showTaskModal, setShowTaskModal] = useState(false);
+
+  const handleTaskClose = () => {
+    setShowTaskModal(false);
+  }
+
+  const handleListModalClose = () => {
+    setShowListModal(false)
+  }
 
   return (
     <div
       className="min-h-screen bg-neutral-300 text-black dark:bg-black dark:text-white 
     flex-col flex p-1 space-y-2 space-y-reverse"
     >
+      <div
+        className="bg-blue-700 p-4 max-w-md mx-auto fixed bottom-[3em] items-center
+          right-[3em] z-0 rounded-full w-[4em] h-[4em] hover:bg-blue-500 shadow-md hover:shadow-neutral-700"
+        onClick={() => setShowTaskModal(true)}
+      ><FontAwesomeIcon icon={faPencil} color="white" className="w-7 h-7 ml-[3px] mt-1" /></div>
+
       <Header />
+
       <TaskProvider>
+
+        <ListModal isOpen={showListModal} onClose={handleListModalClose} />
+        <TaskModal isOpen={showTaskModal} onClose={handleTaskClose} />
+
         <TaskPanel>
-          <ListEntryDialog
-            className="fixed top-[10em] right-[3em]"
-            onClose={() => {
-              setShowListInput(false);
-            }}
-            isOpen={showListInput}
-          />
           <TaskList>
             <button
-              className="max-w-sm mx-auto shrink-0 px-2 items-center bg-neutral-900 text-neutral-50 hover:border-neutral-600 hover:cursor-pointer inline-flex space-x-0 max-sm:text-sm border-neutral-900 border-[3px] max-sm:rounded-tr-md"
-              onClick={() => setShowListInput(true)}
+              className="max-w-sm shrink-0 px-2 items-center bg-neutral-900 text-neutral-50 hover:border-neutral-600 hover:cursor-pointer inline-flex space-x-0 max-sm:text-sm mr-auto p-4"
+              onClick={() => setShowListModal(true)}
             >
               New List
             </button>
           </TaskList>
         </TaskPanel>
+
       </TaskProvider>
     </div>
   );

@@ -24,9 +24,7 @@ const TabContent = ({ listID }) => {
 };
 
 export const TaskList = ({ children }) => {
-  const { list } = useTask();
-
-  const [activeListID, setActiveListID] = useState(1);
+  const { list, activeListID, setActiveListID } = useTask();
 
   const handleElementClick = (key) => {
     setActiveListID(key);
@@ -36,11 +34,10 @@ export const TaskList = ({ children }) => {
     <div>
       <div className="flex flex-row rounded-t-sm shadow-lg">
         <ul className={`list flex list-none space-x-2 p-1 overflow-x-auto `}>
-          {list.map((item, i) => (
+          {list.sort((a, b) => a.id - b.id).map((item, i) => (
             <li
-              className={`${
-                activeListID === item.id ? "focus" : ""
-              } hover:cursor-pointer max-sm:text-sm p-2 hover:border-b-4 group`}
+              className={`${activeListID === item.id ? "focus" : ""
+                } hover:cursor-pointer max-sm:text-sm p-2 hover:border-b-4 group`}
               key={i}
             >
               <div
