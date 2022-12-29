@@ -10,7 +10,7 @@ const TabContent = ({ listID }) => {
   }, [listID]);
 
   return (
-    <div className="p-8">
+    <div className="">
       <ul>
         {tasks &&
           tasks.map((task) => (
@@ -45,7 +45,7 @@ export const TaskList = ({ children }) => {
           {list.sort((a, b) => a.id - b.id).map((item, i) => (
             <li
               className={`${activeListID === item.id ? "focus" : ""
-                } hover:cursor-pointer max-sm:text-sm p-2 hover:border-b-4 group snap-start`}
+                } hover:cursor-pointer min-w-fit max-sm:text-sm p-2 hover:border-b-4 group snap-start`}
               key={i}
             >
               <div
