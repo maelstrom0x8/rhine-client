@@ -7,7 +7,7 @@ export function ListModal({ className, isOpen, onClose = () => { } }) {
 
   const [title, setTitle] = useState("");
 
-  const { addList } = useTask();
+  const { addList} = useTask();
 
   const handleSubmit = () => {
     if (title) {
