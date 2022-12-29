@@ -9,6 +9,7 @@ import TaskList from "~/components/TaskPanel/TaskList";
 import TaskModal from "~/components/Modal/TaskModal";
 import ListModal from "~/components/Modal/ListModal";
 import { TaskProvider } from "~/context/tasks/Context";
+import ListContent from "~/components/TaskPanel/ListContent";
 
 
 
@@ -52,6 +53,7 @@ const App = () => {
               New List
             </button>
           </TaskList>
+          <ListContent className={"flex-1 mt-4"}/>
         </TaskPanel>
 
       </TaskProvider>

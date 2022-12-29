@@ -1,6 +1,6 @@
 export const TaskPanel = ({ className, children }) => {
   return (
-    <div className={`${className} bg-white mx-2 rounded-t-md flex-[3]`}>
+    <div className={`${className} bg-white mx-2 rounded-t-md flex-[3] flex flex-col`}>
       {children}
     </div>
   );
