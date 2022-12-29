@@ -3,7 +3,8 @@ import { useState } from "react";
 
 import { faCalendarCheck } from "@fortawesome/free-regular-svg-icons";
 import { faBarsStaggered } from "@fortawesome/free-solid-svg-icons";
-import { useTask, useKey } from "~/context/Hooks";
+import { useKey } from "~/hooks/useKey";
+import useTask from "~/hooks/useTask";
 
 
 export const TaskModal = ({ className, isOpen, onClose = () => { } }) => {
