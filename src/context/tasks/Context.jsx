@@ -10,15 +10,20 @@ export const TaskProvider = ({ children }) => {
   const [list, setList] = useState([]);
   const [tasks, setTasks] = useState([]);
 
-  const [activeListID, setActiveListID] = useState(1);
+  const [activeListID, setActiveListID] = useState(0);
 
-  const getListTasks = (listID) => {
-    axios
-      .get(`${API_URL_PATH}/task`, { params: { list_id: `${listID}` } })
-      .then((res) => setTasks(res.data))
-      .catch((err) => { });
-    return tasks;
+  const getListTasks = () => {
+    if (activeListID > 0) {
+      axios
+        .get(`${API_URL_PATH}/task`, { params: { list_id: `${activeListID}` } })
+        .then((res) => {
+          setTasks([...res.data]);
+        })
+        .catch((err) => { });
+    }
   };
+
+  useEffect(() => { getListTasks() }, [activeListID])
 
   const addList = (title) => {
     axios
@@ -30,7 +35,11 @@ export const TaskProvider = ({ children }) => {
   };
 
   const addTask = (values) => {
-    axios.post(`${API_URL_PATH}/task/create`, { ...values }, { params: { list_id: `${activeListID}` } })
+    if (activeListID > 0) {
+      axios.post(`${API_URL_PATH}/task/create`, { ...values }, { params: { list_id: `${activeListID}` } })
+        .then(res => { setTasks([...tasks, res.data]) })
+        .catch(err => { })
+    }
   }
 
   const updateList = () => {
@@ -52,7 +61,7 @@ export const TaskProvider = ({ children }) => {
   }, []);
 
   return (
-    <TaskContext.Provider value={{ list, getListTasks, addList, addTask, activeListID, setActiveListID }}>
+    <TaskContext.Provider value={{ list, tasks, getListTasks, addList, addTask, activeListID, setActiveListID }}>
       {children}
     </TaskContext.Provider>
   );
