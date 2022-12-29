@@ -30,15 +30,29 @@ export const TaskModal = ({ className, isOpen, onClose = () => { } }) => {
     })
     onClose();
   }
-
+  
   const handleSave = () => {
-    addTask(values)
+    addTask(values);
+    handleClose();
   }
+
+  const handleKeyDown = (ev) => {
+    switch (ev.key) {
+      case "Enter":
+        handleSave();
+        break;
+      default:
+        break;
+    }
+  }
+
 
   useKey("Escape", handleClose);
 
   return (
-    <div className={`${!isOpen && "hidden"} max-sm:fixed w-full top-0 bottom-0 left-0 bg-neutral-600/50 right-0`}>
+    <div className={`${!isOpen && "hidden"} max-sm:fixed w-full top-0 bottom-0 left-0 bg-neutral-600/50 right-0`}
+      onKeyDown={handleKeyDown}
+    >
       <div
         className={`${className} py-4 pb-3 flex flex-col shadow-lg rounded-md absolute bottom-16 pt-[4em] w-[90%] mx-6 px-2 bg-white`}
       >
