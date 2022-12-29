@@ -13,8 +13,8 @@ const TabContent = ({ listID }) => {
     <div className="p-8">
       <ul>
         {tasks &&
-          tasks.map((task, i) => (
-            <li key={i} className="p-2 shadow-md mt-1">
+          tasks.map((task) => (
+            <li key={task.id} className="p-2 shadow-md mt-1">
               {task.name}
             </li>
           ))}
@@ -30,14 +30,22 @@ export const TaskList = ({ children }) => {
     setActiveListID(key);
   };
 
+  const listRef = useRef();
+
+  useEffect(() => {
+    listRef.current.scrollBy(listRef.current.scrollWidth, 0);
+  }, []);
+
   return (
     <div>
       <div className="flex flex-row rounded-t-sm shadow-lg">
-        <ul className={`list flex list-none space-x-2 p-1 overflow-x-auto `}>
+        <ul
+          ref={listRef}
+          className={`list flex list-none space-x-2 p-1 overflow-x-auto scroll-smooth snap-x`}>
           {list.sort((a, b) => a.id - b.id).map((item, i) => (
             <li
               className={`${activeListID === item.id ? "focus" : ""
-                } hover:cursor-pointer max-sm:text-sm p-2 hover:border-b-4 group`}
+                } hover:cursor-pointer max-sm:text-sm p-2 hover:border-b-4 group snap-start`}
               key={i}
             >
               <div
