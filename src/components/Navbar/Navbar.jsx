@@ -1,4 +1,4 @@
-export const Header = () => {
+export const Navbar = () => {
   return (
     <div className="flex max-w-full h-auto mx-1 ">
       {/* logo */}

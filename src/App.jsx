@@ -3,7 +3,7 @@ import { faPencil } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 
-import Header from "~/components/Header";
+import Navbar from "~/components/Navbar";
 import TaskPanel from "~/components/TaskPanel";
 import TaskList from "~/components/TaskPanel/TaskList";
 import TaskModal from "~/components/Modal/TaskModal";
@@ -37,7 +37,7 @@ const App = () => {
         onClick={() => setShowTaskModal(true)}
       ><FontAwesomeIcon icon={faPencil} color="white" className="w-7 h-7 ml-[3px] mt-1" /></div>
 
-      <Header />
+      <Navbar />
 
       <TaskProvider>
 
