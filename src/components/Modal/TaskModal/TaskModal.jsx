@@ -54,14 +54,14 @@ export const TaskModal = ({ className, isOpen, onClose = () => { } }) => {
       onKeyDown={handleKeyDown}
     >
       <div
-        className={`${className} py-4 pb-3 flex flex-col shadow-lg rounded-md absolute bottom-16 pt-[4em] w-[90%] mx-6 px-2 bg-white`}
+        className={`${className} py-4 pb-3 flex flex-col shadow-lg rounded-md absolute bottom-16 w-[90%] mx-6 px-2 bg-white dark:bg-neutral-700`}
       >
         <input
           required
           type="text"
           onChange={handleChange("name")}
           placeholder="New task"
-          className="mb-0 font-semibold"
+          className="mb-0 font-semibold dark:bg-neutral-700"
           autoFocus
           spellCheck={false}
           title=""
@@ -70,7 +70,7 @@ export const TaskModal = ({ className, isOpen, onClose = () => { } }) => {
           type="text"
           onChange={handleChange("description")}
           placeholder="Add details"
-          className={`${!showDetails && "hidden"} text-sm`}
+          className={`${!showDetails && "hidden"} text-sm dark:bg-neutral-700 mt-1`}
           spellCheck={false}
           title=""
         />
@@ -82,15 +82,15 @@ export const TaskModal = ({ className, isOpen, onClose = () => { } }) => {
             onClick={() => setShowDetails(true)}
           />
 
-          <FontAwesomeIcon icon={faCalendarCheck} className="hover:cursor-pointer ml-2 w-6 h-6" color="black" />
+          <FontAwesomeIcon icon={faCalendarCheck} className="hover:cursor-pointer ml-2 w-6 h-6"/>
 
 
           <div className="ml-auto space-x-4 pr-2">
-            <button className="text-blue-600 font-semibold disabled:cursor-not-allowed text-sm"
+            <button className="text-blue-400 font-semibold disabled:cursor-not-allowed text-sm"
               onClick={handleClose}
             >Cancel</button>
 
-            <button className="text-blue-600 font-semibold disabled:text-neutral-500 disabled:cursor-not-allowed text-sm"
+            <button className="text-blue-400 font-semibold disabled:text-neutral-500 disabled:cursor-not-allowed text-sm"
               disabled={values.name.length < 1}
               onClick={handleSave}
             >Save</button>

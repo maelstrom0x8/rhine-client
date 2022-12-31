@@ -45,11 +45,11 @@ export const TaskList = ({ children }) => {
           {list.sort((a, b) => a.id - b.id).map((item, i) => (
             <li
               className={`${activeListID === item.id ? "focus" : ""
-                } hover:cursor-pointer min-w-fit max-sm:text-sm p-2 hover:border-b-4 group snap-start`}
+                } hover:cursor-pointer min-w-fit max-sm:text-sm p-2 hover:border-b-4 dark:hover:border-blue-400/25 group snap-start`}
               key={i}
             >
               <div
-                className="group-focus:font-semibold"
+
                 onClick={(e, key) => handleElementClick(item.id)}
               >
                 {`${item.name}`}
