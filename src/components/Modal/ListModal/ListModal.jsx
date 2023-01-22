@@ -1,5 +1,6 @@
-import { useTask, useKey } from "~/context/Hooks";
 import { useState } from "react";
+import useKey from "~/hooks/useKey";
+import useTask from "~/hooks/useTask";
 
 
 

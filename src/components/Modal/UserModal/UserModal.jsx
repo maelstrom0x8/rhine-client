@@ -3,8 +3,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useEffect } from "react";
 import { useRef } from "react";
 import { Link } from "react-router-dom";
-import { useKey } from "~/context/Hooks";
-
+import useKey  from "~/hooks/useKey";
 import useBlur from "~/hooks/useBlur";
 
 export const UserModal = ({ className, isOpen, onBlur = (f) => f }) => {

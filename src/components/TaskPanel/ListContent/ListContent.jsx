@@ -1,5 +1,4 @@
-import { useEffect } from "react"
-import { useTask } from "~/context/Hooks"
+import useTask from "~/hooks/useTask"
 import { TaskItem } from "../TaskItem/TaskItem"
 
 
