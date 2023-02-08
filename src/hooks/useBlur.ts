@@ -1,4 +1,6 @@
-import { useEffect, useRef } from "react";
+import React, { useEffect, useRef } from "react";
+
+
 
 const useBlur = (ref, cb) => {
 
@@ -8,7 +10,7 @@ const useBlur = (ref, cb) => {
         callbackRef.current = cb;
     });
 
-    const handleEvent = (ev) => {
+    const handleEvent = (ev: Event) => {
         if (ref.current && !ref.current.contains(ev.target)) {
             cb();
         }
