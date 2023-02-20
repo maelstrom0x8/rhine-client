@@ -1,7 +1,6 @@
 import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react";
 
-const path = require("path");
 
 export default defineConfig({
   plugins: [react()],
@@ -12,16 +11,8 @@ export default defineConfig({
     https: false,
     proxy: {
       "/api": {
-        target: "http://localhost:8081",
-      },
-      "/auth": {
-        target: "http://localhost:9000"
+        target: "http://localhost:8081"
       }
-    },
-  },
-  resolve: {
-    alias: {
-      "~": path.resolve("src"),
     },
   },
 });
