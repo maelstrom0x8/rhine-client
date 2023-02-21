@@ -1,7 +1,7 @@
-import { useAuth } from '../../hooks/useAuth';
-import { ChangeEvent, useState } from 'react';
+import { useAuth } from '../hooks/useAuth';
+import React, { ChangeEvent, useState } from 'react';
 import { LoginCredentials } from 'shared/IAuth';
-import { TextInput } from '../../components/Input/TextInput';
+import { TextInput } from '../components/Input/TextInput';
 
 const initialValues = {
   username: '',
@@ -13,8 +13,10 @@ export const Login = () => {
 
   const { login } = useAuth();
 
-  const handleChange = (/* prop */) => (event: ChangeEvent) => {
-    // setUserData({ ...userData, [prop]: event.target });
+  const handleChange = (event: React.ChangeEvent<HTMLElement>) => {
+    let ch = event.target.textContent
+    let data = {...userData, ch}
+    setUserData(data);
   };
 
   const handleSubmit = () => {
@@ -27,8 +29,8 @@ export const Login = () => {
         <h1 className="font-semibold mb-6">Create Your Account</h1>
 
         <form className="rounded-md space-y-6">
-          <TextInput placeholder="Password" type="text" required={true} />
-          <TextInput placeholder="Password" type="password" required={true} />
+          <TextInput placeholder="Username" type="text" required={true} onChange={handleChange} />
+          <TextInput placeholder="Password" type="password" required={true} onChange={handleChange} />
         </form>
 
         <button

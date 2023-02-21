@@ -18,3 +18,8 @@ export interface ITaskListResponse {
   id: number;
   name: string;
 }
+
+export type ListResponse = {
+  id: number
+  name: string
+}
