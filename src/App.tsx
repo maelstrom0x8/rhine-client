@@ -1,8 +1,8 @@
-import { MainPage } from "./pages/MainPage";
+import { MainRoute } from "./routes/MainRoute";
 
 const App = () => {
   return (
-    <MainPage/>
+    <MainRoute/>
   );
 };
 

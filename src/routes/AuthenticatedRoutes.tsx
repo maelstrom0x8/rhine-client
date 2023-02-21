@@ -11,6 +11,12 @@ export const AuthenticatedRoute = ({ component }: AuthenticatedRouteType) => {
   const { isAuthenticated } = useAuth();
   console.log(isAuthenticated());
   
-  return isAuthenticated() ?  <>{component}</> : <Navigate to={AppRoutes.login} />
+  if(!isAuthenticated()) {
+		return <Navigate to={AppRoutes.login} />;
+	}
+
+	return( <>
+		{component}
+	</>);
 
 };

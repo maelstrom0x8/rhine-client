@@ -1,7 +1,7 @@
 import React, { createContext, useState } from 'react';
 import { LoginCredentials, RegisterCredentials } from 'shared/IAuth';
 
-interface IContextValues {
+interface IAuthContextValues {
   token: string;
   logout: () => void;
   isAuthenticated: () => boolean;
@@ -17,7 +17,7 @@ const initialValues = {
   register: (credentials: RegisterCredentials) => {},
 };
 
-const AuthContext = createContext<IContextValues>(initialValues);
+const AuthContext = createContext<IAuthContextValues>(initialValues);
 const { Provider } = AuthContext;
 
 interface IAuthProviderProps {
@@ -25,13 +25,13 @@ interface IAuthProviderProps {
 }
 
 const AuthProvider = ({ children }: IAuthProviderProps) => {
-  const [token, setToken] = useState('ef4323fv');
+  const [token, setToken] = useState('');
   const login = (credentials: LoginCredentials) => {};
   const register = (credentials: RegisterCredentials) => {};
   const logout = () => {};
   const isAuthenticated = (): boolean => {
     // return sessionStorage.getItem("access_token") != null;
-    return false;
+    return true;
   };
 
   return (
