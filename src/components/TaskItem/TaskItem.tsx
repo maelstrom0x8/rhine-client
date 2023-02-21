@@ -1,6 +1,7 @@
+import { ITask } from "shared/ITask";
 
 
-export const TaskItem = ({ name, description, schedule }) => {
+export const TaskItem = (props: ITask) => {
 
 
     return (
@@ -8,9 +9,9 @@ export const TaskItem = ({ name, description, schedule }) => {
             <div className="flex flex-row items-center">
                 <input type="radio"  className="w-4 h-4" />
                 <div className="ml-4">
-                    <p>{name}</p>
-                    <p className="text-sm font-light">{description}</p>
-                    <div>{schedule}</div>
+                    <p>{props.title}</p>
+                    <p className="text-sm font-light">{props.description}</p>
+                    <div>{props.schedule.toString()}</div>
                 </div>
             </div>
         </div>

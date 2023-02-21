@@ -1,9 +1,12 @@
 import { faCircleHalfStroke, faCircleUser } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { useLayoutEffect } from "react";
 
 
-export const Navbar = ({openUserModal = f => f}) => {
+interface NavabarProps {
+   openUserModal?: () => void
+}
+
+const Navbar = ({openUserModal}: NavabarProps) => {
 
   const handleTheme = () => {
     if (localStorage.theme !== "dark" || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
@@ -39,3 +42,6 @@ export const Navbar = ({openUserModal = f => f}) => {
     </div>
   );
 };
+
+
+export {Navbar}

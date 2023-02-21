@@ -1,6 +1,7 @@
 import { useAuth } from '../../hooks/useAuth';
 import { ChangeEvent, useState } from 'react';
 import { LoginCredentials } from 'shared/IAuth';
+import { TextInput } from '../../components/Input/TextInput';
 
 const initialValues = {
   username: '',
@@ -8,7 +9,6 @@ const initialValues = {
 };
 
 export const Login = () => {
-
   const [userData, setUserData] = useState<LoginCredentials>(initialValues);
 
   const { login } = useAuth();
@@ -27,23 +27,8 @@ export const Login = () => {
         <h1 className="font-semibold mb-6">Create Your Account</h1>
 
         <form className="rounded-md space-y-6">
-          <input
-            className="focus:border-l-4 focus:border-l-blue-300 focus:font-semibold  pl-1 shadow-sm  w-full text-black text-sm"
-            type="text"
-            placeholder="Username"
-            required
-            /* onChange={handleChange('username')} */
-            autoFocus
-            autoCorrect="false"
-          />
-
-          <input
-            className="focus:border-l-4 focus:border-l-blue-300 focus:font-semibold  pl-1 shadow-sm w-full text-black text-sm"
-            type="password"
-            placeholder="Password"
-            required
-            /* onChange={handleChange('password')} */
-          />
+          <TextInput placeholder="Password" type="text" required={true} />
+          <TextInput placeholder="Password" type="password" required={true} />
         </form>
 
         <button

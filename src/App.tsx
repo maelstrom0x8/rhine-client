@@ -1,11 +1,8 @@
-import { UIProvider } from 'context/UIContext';
-import { MainRoute } from './routes/MainRoute';
+import { MainPage } from "./pages/MainPage";
 
 const App = () => {
   return (
-    <UIProvider>
-      <MainRoute />
-    </UIProvider>
+    <MainPage/>
   );
 };
 

@@ -1,4 +1,4 @@
-import { MainPage } from '../pages/MainPage/MainPage';
+import { MainPage } from '../pages/MainPage';
 import { Route, Routes } from 'react-router-dom';
 import { AppRoutes } from './AppRoutes';
 import { AuthenticatedRoute } from './AuthenticatedRoutes';
