@@ -2,6 +2,7 @@ import { useAuth } from '../hooks/useAuth';
 import React, { ChangeEvent, useState } from 'react';
 import { LoginCredentials } from 'shared/IAuth';
 import { TextInput } from '../components/Input/TextInput';
+import { Link } from 'react-router-dom';
 
 const initialValues = {
   username: '',
@@ -38,8 +39,9 @@ export const Login = () => {
           type="submit"
           onClick={handleSubmit}
         >
-          Sign up
+          Login
         </button>
+        <h1>Do not have an account? <Link to={'/register'}>Sign up!</Link></h1>
       </div>
     </div>
   );
