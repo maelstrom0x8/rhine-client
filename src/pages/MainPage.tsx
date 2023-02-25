@@ -6,8 +6,13 @@ import { TaskProvider } from '../context/TaskContext';
 import { TaskList } from '../components/TaskList/TaskList';
 import { CustomButton } from '../components/Button/CustomButton';
 import ListContent from '../components/ListContent';
+import { ListModal } from '../components/Modal/ListModal/ListModal';
+import { useState } from 'react';
 
 export const MainPage = () => {
+  
+  const [listModalOpen, setListModalOpen] = useState(false);
+
   return (
     <div
       className="min-h-screen bg-neutral-300 text-black dark:bg-neutral-800 dark:text-neutral-300
@@ -28,7 +33,8 @@ export const MainPage = () => {
       <TaskProvider>
         <TaskPanel>
           <TaskList>
-            <CustomButton text='New List' />
+            <CustomButton text='New List' onClick={() => {setListModalOpen(true)}} />
+            <ListModal open={listModalOpen} onClose={() => {setListModalOpen(false)}} />
           </TaskList>
           <ListContent className={'flex-1 mt-4'}/>
         </TaskPanel>
