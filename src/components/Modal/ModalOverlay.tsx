@@ -1,8 +1,10 @@
 import React, { ReactNode } from 'react';
-import { ModalProp } from './ModalProps';
+import { ModalBaseProps } from './ModalProps';
 
-interface ModalOverlayProps extends ModalProp {
+
+interface ModalOverlayProps {
   children: React.ReactNode;
+  open: boolean
 };
 
 export const ModalOverlay = ({ children, open }: ModalOverlayProps) => {
