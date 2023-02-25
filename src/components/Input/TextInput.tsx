@@ -2,9 +2,12 @@ import React from 'react';
 
 type InputProps = {
   type: 'text' | 'password' | 'email';
-  placeholder: string;
-  required: boolean;
-  onChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
+  placeholder?: string;
+  required?: boolean;
+  value?: string;
+  name?: string;
+  className?: string
+  onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
 };
 
 export const TextInput = ({
@@ -12,13 +15,18 @@ export const TextInput = ({
   placeholder,
   required,
   onChange,
+  value,
+  name,
+  className
 }: InputProps) => {
   return (
     <input
-      className="pl-1 py-1 rounded-sm shadow-sm w-full text-black text-sm"
+      className={`${className} pl-1 py-1 rounded-sm shadow-sm w-full text-black text-sm`}
       type={type}
       placeholder={placeholder}
       required={required}
+      value={value}
+      name={name}
       onChange={onChange}
     />
   );
