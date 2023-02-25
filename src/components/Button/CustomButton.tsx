@@ -1,16 +1,25 @@
+import { IconDefinition } from '@fortawesome/fontawesome-svg-core';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
-type CustomButtonProp = {
-  className?: string
+export type CustomButtonProps = {
+  icon?: IconDefinition;
+  onClick: () => void;
   text?: string;
-  onClick?: () => void;
+  className?: string;
+  iconColor?: string;
+  iconStyle?: string;
 };
-
-const CustomButton = (props: CustomButtonProp) => {
+const CustomButton = (props: CustomButtonProps) => {
   return (
     <button
-      className={`${props.className} max-w-sm shrink-0 px-2 items-center bg-neutral-900 dark:bg-neutral-200/80 dark:text-black text-neutral-50 hover:border-neutral-600 hover:cursor-pointer inline-flex space-x-0 max-sm:text-sm mr-auto p-4`}
+      className={`${props.className} px-2 bg-neutral-900 dark:bg-neutral-200/80 dark:text-black text-neutral-50 hover:border-neutral-600 hover:cursor-pointer`}
       onClick={props.onClick}
     >
+      <FontAwesomeIcon
+        icon={props.icon}
+        color={props.iconColor}
+        className={props.iconStyle}
+      />
       {props.text}
     </button>
   );
