@@ -5,13 +5,10 @@ import { ModalBody } from '../ModalBody';
 import { ModalOverlay } from '../ModalOverlay';
 import useKey from '../../../hooks/useKey';
 import { useTask } from '../../../hooks/useTask';
+import { ModalBaseProps } from '../ModalProps';
 
-type ListModalProp = {
-  open: boolean;
-  onClose: () => void;
-};
 
-export const ListModal = ({ open, onClose }: ListModalProp) => {
+export const ListModal = ({ open, onClose }: ModalBaseProps) => {
   const [input, setInput] = useState('');
 
   const { addList } = useTask();

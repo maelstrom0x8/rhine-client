@@ -1,8 +1,7 @@
 export interface ITask {
-  id: number
   title: string;
   description: string;
-  schedule: Date;
+  schedule: string;
   complete: boolean;
 }
 
