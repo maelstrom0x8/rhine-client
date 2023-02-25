@@ -15,7 +15,7 @@ export const TextInput = ({
 }: InputProps) => {
   return (
     <input
-      className="focus:border-l-4 focus:border-l-blue-300 focus:font-semibold  pl-1 shadow-sm w-full text-black text-sm"
+      className="pl-1 py-1 rounded-sm shadow-sm w-full text-black text-sm"
       type={type}
       placeholder={placeholder}
       required={required}
