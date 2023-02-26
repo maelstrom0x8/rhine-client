@@ -22,8 +22,7 @@ export const TaskModal = ({ open, onClose }: ModalBaseProps) => {
   const [task, setTask] = useState<ITask>({
     title: '',
     description: '',
-    schedule: '',
-    complete: false,
+    schedule: ''
   });
 
   const [showDetails, setShowDetails] = useState(false);
@@ -44,7 +43,6 @@ export const TaskModal = ({ open, onClose }: ModalBaseProps) => {
       title: '',
       description: '',
       schedule: '',
-      complete: false,
     });
     onClose();
   };
