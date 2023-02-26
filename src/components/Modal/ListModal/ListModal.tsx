@@ -27,7 +27,7 @@ export const ListModal = ({ open, onClose }: ModalBaseProps) => {
   };
 
   const cancel = () => {
-    setInput('');
+    // forwardRef to clear text in input
     onClose();
   };
 
@@ -36,9 +36,10 @@ export const ListModal = ({ open, onClose }: ModalBaseProps) => {
   return (
     <ModalOverlay open={open}>
       <ModalBody
-        className="bg-neutral-300 absolute p-1 right-10 top-[6em] shadow-md w-[20em] px-2"
+        className="bg-neutral-300 dark:bg-neutral-700 absolute p-1 right-10 top-[6em] shadow-md w-[20em] px-2"
       >
         <TextInput
+          className="bg-transparent dark:text-slate-50 text-lg"
           type="text"
           required={true}
           placeholder="Create new list"

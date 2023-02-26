@@ -22,10 +22,10 @@ export const TaskList = () => {
 
   return (
     <div className="p-2">
-      <div className="pl-2 flex rounded-lg shadow-lg bg-white mx-1">
+      <div className="pl-2 flex rounded-lg shadow-lg bg-white dark:bg-neutral-600">
         <ul
           ref={listRef}
-          className={`list flex space-x-2 p-1 overflow-x-auto scroll-smooth snap-x`}
+          className={`list flex space-x-2 p-1 overflow-x-auto scroll-smooth snap-x flex-grow`}
         >
           {list
             .sort((a: any, b: any) => a.id - b.id)
@@ -53,7 +53,7 @@ export const TaskList = () => {
           onClick={() => {
             setListModalOpen(true);
           }}
-          className="max-w-sm mr-auto shrink-0 px-2 items-center bg-neutral-900 hover:border-neutral-600 inline-flex space-x-0 max-sm:text-sm border-neutral-900 border-[3px]"
+          className="max-w-sm mx-auto rounded-tr-lg rounded-br-lg shrink-0 px-2 items-center bg-neutral-900 hover:border-neutral-600  inline-flex space-x-0 max-sm:text-sm border-neutral-900 dark:border-0 border-[3px]"
         />
       </div>
 
