@@ -2,7 +2,6 @@ export interface ITask {
   title: string;
   description: string;
   schedule: string;
-  complete: boolean;
 }
 
 export interface ITaskResponse {
@@ -18,7 +17,7 @@ export interface ITaskListResponse {
   name: string;
 }
 
-export type ListResponse = {
+export interface ListResponse {
   id: number
   name: string
 }

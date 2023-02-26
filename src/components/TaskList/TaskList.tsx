@@ -1,31 +1,31 @@
+import React, { useEffect, useRef, useState } from 'react';
+import { CustomButton } from '../../components/Button/CustomButton';
+import { ListModal } from '../../components/Modal/ListModal/ListModal';
+
+import { faPlus } from '@fortawesome/free-solid-svg-icons';
 import { useTask } from '../../hooks/useTask';
-import { ReactNode, useEffect, useRef, useState } from 'react';
-import { ITask, ITaskListResponse } from 'shared/ITask';
 
-type ListProps = {
-  children? : React.ReactNode
-  className?: string
-}
 
-export const TaskList = (props: ListProps) => {
-  const { list, activeListId, setActiveListId } = useTask();
+export const TaskList = () => {
+  const [listModalOpen, setListModalOpen] = useState(false);
+  const {list, activeListId, setActiveListId } = useTask();
 
   const handleElementClick = (key: number) => {
     setActiveListId(key);
   };
 
-  const listRef = useRef<any>();
+  const listRef = useRef<HTMLUListElement>(null);
 
   useEffect(() => {
-    listRef.current.scrollBy(listRef.current.scrollWidth, 0);
+    listRef.current?.scrollBy(listRef.current.scrollWidth, 0);
   }, []);
 
   return (
-    <div>
-      <div className="flex flex-row rounded-t-sm shadow-lg">
+    <div className="p-2">
+      <div className="pl-2 flex rounded-lg shadow-lg bg-white mx-1">
         <ul
           ref={listRef}
-          className={`list flex list-none space-x-2 p-1 overflow-x-auto scroll-smooth snap-x`}
+          className={`list flex space-x-2 p-1 overflow-x-auto scroll-smooth snap-x`}
         >
           {list
             .sort((a: any, b: any) => a.id - b.id)
@@ -33,17 +33,36 @@ export const TaskList = (props: ListProps) => {
               <li
                 className={`${
                   activeListId === item.id ? 'focus' : ''
-                } hover:cursor-pointer min-w-fit max-sm:text-sm p-2 hover:border-b-4 dark:hover:border-blue-400/25 group snap-start`}
+                } hover:cursor-pointer max-sm:text-sm p-2 hover:border-b-4 group snap-start`}
                 key={i}
               >
-                <div onClick={() => handleElementClick(item.id)}>
-                  {`${item.name}`}
+                <div
+                  className={`group-focus:font-semibold`}
+                  onClick={() => handleElementClick(item.id)}
+                >
+                  <p className="whitespace-nowrap">{`${item.name}`}</p>
                 </div>
               </li>
             ))}
         </ul>
-        {props.children}
+
+        <CustomButton
+          icon={faPlus}
+          iconStyle="mr-1"
+          text="New List"
+          onClick={() => {
+            setListModalOpen(true);
+          }}
+          className="max-w-sm mr-auto shrink-0 px-2 items-center bg-neutral-900 hover:border-neutral-600 inline-flex space-x-0 max-sm:text-sm border-neutral-900 border-[3px]"
+        />
       </div>
+
+      <ListModal
+        open={listModalOpen}
+        onClose={() => {
+          setListModalOpen(false);
+        }}
+      />
     </div>
   );
 };
