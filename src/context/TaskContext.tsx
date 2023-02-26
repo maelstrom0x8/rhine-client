@@ -34,7 +34,7 @@ interface TaskProviderProps {
 }
 
 const TaskProvider = ({ children }: TaskProviderProps) => {
-  const [list, setList] = useState([]);
+  const [list, setList] = useState([{name: 'Default', id: 0}]);
 
   const [tasks, setTask] = useState([]);
 
